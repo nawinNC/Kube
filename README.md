@@ -1,1 +1,8 @@
-mini kube!!!!
+# Kube
+
+### install list
+
+- Kubectl
+- Minikube
+- Docker Desktop
+
