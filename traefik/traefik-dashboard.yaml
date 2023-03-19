@@ -8,6 +8,14 @@ spec:
     secret: dashboard-auth-secret
     removeHeader: true
 ---
+apiVersion: v1
+data:
+  users: c3BjbjE1OiQyYSQwNSRCNnFWcnlhVWVFbzMyaW84dUI4SUp1TlJwZEEwZXNyYkZMeVdRL09QcmNKZnFXdmZFUnpjeQo=
+kind: Secret
+metadata:
+  name: dashboard-auth-secret
+  namespace: spcn15
+---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -20,7 +28,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`traefik.spcn15.local`)
+    - match: Host(`traefik.spcn15.local`) 
       kind: Rule
       middlewares:
         - name: traefik-basic-authen
