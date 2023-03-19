@@ -192,7 +192,7 @@ kubectl apply -f traefik-dashboard.yaml
   
  - deploy ไฟล์ hello-world.yaml
   ```
-  kubectl apply -f rancherhello-world.yaml
+  kubectl apply -f hello-world.yaml
   ```
   
  - deploy ไฟล์ service.yaml
