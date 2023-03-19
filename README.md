@@ -9,7 +9,7 @@
 
 ##  การติดตั้ง kubectl กับ minikube
 
-### ติดตั้ง kubectl
+<details><summary><b>ติดตั้ง kubectl</summary>
 
 - ทำการโหลด kubectl จาก : https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/ หรือใช้คำสั่ง
 
@@ -21,9 +21,9 @@ curl.exe -LO "https://dl.k8s.io/release/v1.26.0/bin/windows/amd64/kubectl.exe"
 
 - เข้าไปสร้าง ที่ไดฟ์ C ชื่อ : kubectl แล้วนำไฟล์ที่โหลดมาเข้าไปไว้ที่โฟลเดอร์ที่เราสร้างไว้และนำ Path ไปเพิ่มใน env
 
-![image](https://user-images.githubusercontent.com/115439255/226182622-213c9a97-e0eb-4213-9077-c3faad8ff717.png)
+![image](https://user-images.githubusercontent.com/115439255/226182622-213c9a97-e0eb-4213-9077-c3faad8ff717.png)</details>
 
-### ติดตั้ง minikube
+<details><summary><b>ติดตั้ง minikube</summary>
 
 - ทำการโหลด minikube จาก : https://minikube.sigs.k8s.io/docs/start/ หรือ ใช้คำสั่ง
 
@@ -48,8 +48,9 @@ if ($oldPath.Split(';') -inotcontains 'C:\minikube'){ `
 ```
     minikube
 ```
-
-## การติดตั้ง docker engine
+</details>
+  
+<details><summary><b>การติดตั้ง docker engine</summary>
 
 Ref : https://docs.docker.com/desktop/install/windows-install/
 
@@ -64,7 +65,7 @@ minikube start --driver=docker
 
 - ผลลัพธ์
 
-![image](https://user-images.githubusercontent.com/115439255/226184268-fda2b321-ca93-4d82-9146-37ff61a68a82.png)
+![image](https://user-images.githubusercontent.com/115439255/226184268-fda2b321-ca93-4d82-9146-37ff61a68a82.png)</details>
 
 ## การ deploy Traefik
 Ref : https://github.com/iamapinan/kubeplay-traefik
