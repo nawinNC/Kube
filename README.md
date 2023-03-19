@@ -2,10 +2,10 @@
 
 ### ขั้นตอนการทำงาน
 
-- 1.การติดตั้ง kubectl กับ minikube
-- 2.การติดตั้ง docker engine
-- 3.การ deploy Traefik
-- 4.การ deploy rancher/hello-world
+- [1.การติดตั้ง kubectl กับ minikube](https://github.com/nawinNC/Kube#%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87-kubectl-%E0%B8%81%E0%B8%B1%E0%B8%9A-minikube)
+- [2.การติดตั้ง docker engine](https://github.com/nawinNC/Kube/edit/master/README.md#%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87-docker-engine)
+- [3.การ deploy Traefik](https://github.com/nawinNC/Kube/edit/master/README.md#%E0%B8%81%E0%B8%B2%E0%B8%A3-deploy-traefik)
+- [4.การ deploy rancher/hello-world](https://github.com/nawinNC/Kube/edit/master/README.md#%E0%B8%81%E0%B8%B2%E0%B8%A3-deploy-rancherhello-world)
 
 ##  การติดตั้ง kubectl กับ minikube
 
@@ -50,7 +50,7 @@ if ($oldPath.Split(';') -inotcontains 'C:\minikube'){ `
 ```
 </details>
   
-<details><summary><b>การติดตั้ง docker engine</summary>
+## การติดตั้ง docker engine
 
 Ref : https://docs.docker.com/desktop/install/windows-install/
 
@@ -65,7 +65,7 @@ minikube start --driver=docker
 
 - ผลลัพธ์
 
-![image](https://user-images.githubusercontent.com/115439255/226184268-fda2b321-ca93-4d82-9146-37ff61a68a82.png)</details>
+![image](https://user-images.githubusercontent.com/115439255/226184268-fda2b321-ca93-4d82-9146-37ff61a68a82.png)
 
 ## การ deploy Traefik
 Ref : https://github.com/iamapinan/kubeplay-traefik
