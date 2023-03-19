@@ -108,6 +108,7 @@ kubectl create secret generic -n " กำหนดชื่อ " dashboard-auth-
 - เมื่อ run เสร็จแล้วจะได้ไฟล์ dashboard-secret.yaml มา และนำข้อมูลตรง user ไปใส่ในไฟล์ traefik-dashboard.yaml ให้ตรงกัน
 
 ![image](https://user-images.githubusercontent.com/115439255/226185679-d1b8412f-b660-4ddd-ad3a-cca8da918397.png)
+  
 ![image](https://user-images.githubusercontent.com/115439255/226185729-0cfe5332-c8c6-412c-a915-e590f9df2bb0.png)
 
 - Deploy โดยใช้คำสั่ง
@@ -170,23 +171,25 @@ kubectl apply -f traefik-dashboard.yaml
         targetPort: 80
   ```
 - สร้างไฟล์ service.yaml และเพิ่มโค้ดไปในไฟล์
-   ```
+
+```
   apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: service-ingress
-  namespace: spcn15
-spec:
-  entryPoints:
-    - web
-    - websecure
-  routes:
-  - match: Host(`web.spcn18.local`)
-    kind: Rule
-    services:
-    - name: rancher-service
-      port: 80
-  ```
+  kind: IngressRoute
+  metadata:
+    name: service-ingress
+    namespace: spcn15
+  spec:
+    entryPoints:
+      - web
+      - websecure
+    routes:
+    - match: Host(`web.spcn15.local`)
+      kind: Rule
+      services:
+      - name: rancher-service
+        port: 80
+```
+  
  - deploy ไฟล์ hello-world.yaml
   ```
   kubectl apply -f rancherhello-world.yaml
@@ -202,3 +205,5 @@ spec:
   minikube tunnel
   ```
  - ทดสอบ deploy rancher โดย domain ที่เราตั้งไว้ คือ http://web.spcn15.local/
+
+  ![image](https://user-images.githubusercontent.com/115439255/226188011-60a11116-109c-42a1-b530-daf584de9219.png)
