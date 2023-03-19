@@ -115,8 +115,90 @@ kubectl create secret generic -n " กำหนดชื่อ " dashboard-auth-
 kubectl apply -f traefik-dashboard.yaml
 ```
 
+- สร้าง tunnel โดยใช้คำสั่ง
+```
+  minikube tunnel
+```
+
 - ทดสอบ deploy traefik โดย domain ที่เราตั้งไว้ คือ https://traefik.spcn15.local/dashboard/#/
 
 ![image](https://user-images.githubusercontent.com/115439255/226185931-ce817b96-c000-4b54-94b1-6b4adf95486d.png)
 
+## การ deploy rancher/hello-world
+ 
+- เพิ่ม 127.0.0.1 web.spcn15.local ในไฟล์ hosts ที่ path C:\Windows\System32\drivers\etc
+  
+![image](https://user-images.githubusercontent.com/115439255/226186917-f7771f64-9b2b-4138-acf5-a517ee8ea200.png)
 
+- สร้างไฟล์ hello-world.yaml และเพิ่มโค้ดด้านไปในไฟล์
+ ``` 
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: rancher-deployment
+    namespace: spcn15
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: rancher
+    template:
+      metadata:
+        labels:
+          app: rancher
+      spec:
+        containers:
+        - name: rancher
+          image: rancher/hello-world
+          ports:
+          - containerPort: 80
+    ---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: rancher-service
+      labels:
+        name: rancher-service
+      namespace: spcn18
+    spec:
+      selector:
+        app: rancher
+    ports:
+      - name: http
+        port: 80
+        protocol: TCP
+        targetPort: 80
+  ```
+- สร้างไฟล์ service.yaml และเพิ่มโค้ดไปในไฟล์
+   ```
+  apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: service-ingress
+  namespace: spcn15
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+  - match: Host(`web.spcn18.local`)
+    kind: Rule
+    services:
+    - name: rancher-service
+      port: 80
+  ```
+ - deploy ไฟล์ hello-world.yaml
+  ```
+  kubectl apply -f rancherhello-world.yaml
+  ```
+  
+ - deploy ไฟล์ service.yaml
+  ```
+  kubectl apply -f service.yaml
+  ```
+  
+ - สร้าง tunnel โดยใช้คำสั่ง
+  ```
+  minikube tunnel
+  ```
+ - ทดสอบ deploy rancher โดย domain ที่เราตั้งไว้ คือ http://web.spcn15.local/
